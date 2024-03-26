@@ -43,14 +43,13 @@ export class DCredentialCard {
   @Prop() expirationDate?: string;
 
   render() {
-    // const imageSrc = getAssetPath(`./assets/Rectangle.png`);
     return (
       <Host>
         <div class="between">
           <div class="info">
             <div class="heading">
               <d-avatar name={this.name} src={this.logoSrc}></d-avatar>
-              <span class="name">{this.name}</span>
+              <d-heading class="name line-clamp-2">{this.name}</d-heading>
             </div>
             <span class="description">{this.description}</span>
           </div>

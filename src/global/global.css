@@ -20,9 +20,15 @@
     --on-accent: #000;
     --on: #000;
     --on-alt: #000;
+    --stroke: #000;
+    --highlight: 0f0;
     --success: #279b48;
     --warning: #e58600;
     --error: #ee342b;
+    --sans-font-family: 'Gantari Variable', 'sans-serif';
+    --icon-font-family: 'Material Symbols Rounded';
+    --background-card-url: url('https://cdn.jsdelivr.net/npm/@didroom/components@latest/dist/didroom-components/assets/rect.png');
+    --input-background: #F9FAFB;
   }
 
   .dark {
@@ -32,9 +38,13 @@
     --on-accent: #000;
     --on: #000;
     --on-alt: #000;
+    --stroke: #000;
+    --highlight: #0f0;   
     --success: #4ecb71;
     --warning: #ff9601;
     --error: #ff443b;
+    --background-card-url: url('https://cdn.jsdelivr.net/npm/@didroom/components@latest/dist/didroom-components/assets/rect-dark.png');
+    --input-background: #374151;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -45,15 +55,19 @@
     --on-accent: #000;
     --on: #000;
     --on-alt: #000;
+    --stroke: #000;
+    --highlight: #0f0;   
     --success: #4ecb71;
     --warning: #ff9601;
     --error: #ff443b;
+    --background-card-url: url('https://cdn.jsdelivr.net/npm/@didroom/components@latest/dist/didroom-components/assets/rect-dark.png');
+    --input-background: #fff;
     }
   }
 }
 
 .icon {
-  font-family: 'Material Symbols Rounded';
+  font-family: var(--icon-font-family);
   font-weight: normal;
   font-style: normal;
   font-size: 24px; /* Preferred icon size */

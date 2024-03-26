@@ -4,7 +4,9 @@ import { ColorArgTypes } from '../types.js';
 
 const meta = {
   title: 'Design System/Atoms/Button',
-  render: args => `<d-button color=${args.color} disabled=${args.disabled}>BUTTON</d-button>`,
+  render: (args, story) => `<d-button color=${args.color} clear=${args.clear ? "true" : "false"} disabled=${args.disabled} ${args.href ? `href=${args.href}` : ''} size=${args.size} ${args.expand ? 'expand' : ''}>
+  ${Boolean(story.parameters.slot) ? `<div slot="${story.parameters.slot.position}">${story.parameters.slot.icon}</div>` : ''}
+  ${Boolean(story.parameters.slot?.position == 'icon-only') ? '' : 'BUTTON'}</d-button>`,
   argTypes: {
     disabled: { control: 'boolean', description: 'Disable the button' },
     color: ColorArgTypes,
@@ -17,7 +19,6 @@ type Story = StoryObj<Components.DButton>;
 export const Default: Story = {
   args: {
     color: 'primary',
-    href: '#',
     disabled: false,
   },
   parameters: {
@@ -40,6 +41,25 @@ export const Accent: Story = {
     color: 'accent',
   },
 };
+export const Outline: Story = {
+  args: {
+    ...Default.args,
+    color: 'outline',
+  },
+};
+export const clear: Story = {
+  args: {
+    ...Default.args,
+    clear: true,
+  },
+};
+export const clearAccent: Story = {
+  args: {
+    ...Default.args,
+    clear: true,
+    color: 'accent',
+  },
+};
 export const AccentDisabled: Story = {
   args: {
     ...Default.args,
@@ -54,9 +74,84 @@ export const PrimaryDisabled: Story = {
     disabled: true,
   },
 };
+export const ClearDisabled: Story = {
+  args: {
+    ...Default.args,
+    clear: true,
+    disabled: true,
+  },
+};
+export const Expand: Story = {
+  args: {
+    ...Default.args,
+    expand: true,
+  },
+};
+export const IconBefore: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    slot: {
+      position: 'start',
+      icon: '🚀',
+    },
+  },
+};
+
+export const IconAfter: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    slot: {
+      position: 'end',
+      icon: '🚀',
+    },
+  },
+};
+export const IconOnly: Story = {
+  args: {
+    ...Default.args,
+  },
+  parameters: {
+    slot: {
+      position: 'icon-only',
+      icon: '🚀',
+    },
+  },
+};
+export const clearWithIconOnly: Story = {
+  args: {
+    ...Default.args,
+    clear: true,
+  },
+  parameters: {
+    slot: {
+      position: 'icon-only',
+      icon: '🚀',
+    },
+  },
+};
+
+
 export const Link: Story = {
   args: {
     ...Default.args,
     href: '/',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    ...Default.args,
+    size: 'small',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    ...Default.args,
+    size: 'large',
   },
 };
