@@ -2,24 +2,28 @@ import { DDefinition } from './d-definition';
 import { Meta, StoryObj } from '@storybook/html';
 
 const meta = {
-  title: 'Design System/Atoms/Definition',
+  title: 'Design System/DATA DISPLAY/Definition',
   render: args =>
     `<d-definition 
     title="${args.title}" 
     definition="${args.definition}"
     ${args.hidable && 'hidable'}
+    ${args.dotted && 'dotted'}
     >
     </d-definition>
     <d-definition 
     title="${args.title}" 
     definition="${args.definition}"
     ${args.hidable && 'hidable'}
+    ${args.dotted && 'dotted'}
+
     >
     </d-definition>
     <d-definition 
     title="${args.title}" 
     definition="${args.definition}"
     ${args.hidable && 'hidable'}
+    ${args.dotted && 'dotted'}
     >
     </d-definition>
     `,
@@ -45,5 +49,12 @@ export const Hidable: Story = {
   args: {
     ...Default.args,
     hidable: true,
+  },
+};
+
+export const Dotted: Story = {
+  args: {
+    ...Default.args,
+    dotted: true,
   },
 };

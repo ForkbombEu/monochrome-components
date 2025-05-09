@@ -2,14 +2,19 @@ import { DCredentialCard } from './d-credential-card';
 import { Meta, StoryObj } from '@storybook/html';
 
 const meta = {
-  title: 'Design System/Molecule/CredentialCard',
+  title: 'Design System/DATA DISPLAY/CredentialCard',
   render: args =>
     `<d-credential-card 
     name="${args.name}" 
     issuer="${args.issuer}" 
-    description="${args.description}" 
     expiration-date="${args.expirationDate}" 
-    verified="${args.verified}">
+    issued-by-label="${args.issuedByLabel}"
+    expiration-label="${args.expirationLabel}"
+    verified="${args.verified}"
+    logo-src="${args.logoSrc}"
+    >
+    <d-badge>address</d-badge>
+    <d-badge>email</d-badge>
     </d-credential-card>`,
 } satisfies Meta<DCredentialCard>;
 
@@ -19,10 +24,12 @@ type Story = StoryObj<DCredentialCard>;
 export const Default: Story = {
   args: {
     name: 'Over 18',
-    description: 'This credential proves that you are over 18 years old',
     issuer: 'Italian Government',
+    issuedByLabel: 'issued by',
+    expirationLabel: 'exp',
     expirationDate: '2017-01-01',
-    verified: false
+    verified: false,
+    logoSrc: `https://api.dicebear.com/9.x/shapes/svg?seed=${new Date()}`,
   },
   parameters: {
     design: {
@@ -38,5 +45,3 @@ export const Verified: Story = {
     verified: true,
   },
 };
-
-

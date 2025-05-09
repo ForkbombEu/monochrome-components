@@ -9,7 +9,7 @@
 <p align="center">
    <img src="https://github.com/ForkbombEu/DIDroom/raw/main/images/DIDroom_logo.png" width="370">
 </p>
-Standard web components with efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser and mobile supporting the Custom Elements v1 spec
+Standard web components with efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser and mobile supporting the Custom Elements v1 spec.
 
 
 ---
@@ -20,6 +20,7 @@ Standard web components with efficient one-way data binding, an asynchronous ren
 ### 🚩 Table of Contents
 
 - [🎮 Quick start](#-quick-start)
+- [💄 Whitlable](#-whitelable)
 - [🚑 Community & support](#-community--support)
 - [😍 Acknowledgements](#-acknowledgements)
 - [👤 Contributing](#-contributing)
@@ -42,7 +43,7 @@ It's super easy starting template as follows:
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@didroom/components/dist/didroom-components/didroom-components.css"/>
   </head>
 
-  <body style="padding: 20px">
+  <body style="padding: 25px">
     <didroom-avatar size="xl" src="https://api.dicebear.com/7.x/open-peeps/svg" />
   </body>
 </html>
@@ -54,13 +55,18 @@ for the list of all the components docs:
 [CLICK HERE TO START USING ME](https://forkbombeu.github.io/didroom-components/)
 
 ***
+## 💄 Whitelable
+
+please refer to [./docs/CHANGE_THEME.md](./docs/CHANGE_THEME.md)
+
+***
 ## 🚑 Community & support
 
 **[📝 Documentation](#toc)** - Getting started and more.
 
 **[🌱 Ecosystem](https://forkbomb.solutions/solution/didroom/)** - W3C-DID Dyne, Signroom, Zenroom, Didroom
 
-**[🚩 Issues](../../issues)** - Bugs end errors you encounter using {project_name}.
+**[🚩 Issues](../../issues)** - Bugs end errors you encounter using didroom-components.
 
 **[[] Matrix](https://socials.dyne.org/matrix)** - Hanging out with the community.
 
@@ -76,7 +82,7 @@ for the list of all the components docs:
 
 Copyleft 🄯 2024 by [Forkbomb](https://www.forkbomb.eu) BV, Amsterdam
 
-Designed by Micol Salomone and Ayse Mete coded by Puria Nafisi Azizi
+Designed by Micol Salomone and Ayse Mete coded by Ennio Donato, Puria Nafisi Azizi and Matteo Cristino
 
 **[🔝 back to top](#toc)**
 

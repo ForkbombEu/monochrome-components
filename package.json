@@ -1,6 +1,6 @@
 {
-  "name": "@didroom/monochrome",
-  "version": "1.0.0",
+  "name": "@didroom/components",
+  "version": "1.32.4",
   "description": "Didroom web components",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -21,17 +21,22 @@
   "scripts": {
     "clean": "rm -rf .stencil/ dist/ loader www",
     "build": "stencil build",
-    "test": "stencil test --spec --e2e",
+    "test": "stencil test --runInBand --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
+    "assets:icons": "node generateSvgData.mjs icons",
+    "assets:illustrations": "node generateSvgData.mjs illustrations",
     "build-storybook": "storybook build --docs -s dist",
     "dev": "NODE_ENV=development npm-run-all -p dev:*",
     "dev:start": "stencil build --watch --serve",
     "dev:storybook": "storybook dev -p 6006 -s dist"
   },
   "dependencies": {
+    "@capacitor/clipboard": "^6.0.2",
     "@stencil/core": "^4.11.0",
-    "@tailwindcss/line-clamp": "^0.4.4"
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "ansi-to-html": "^0.7.2",
+    "did-resolver": "^4.1.0"
   },
   "devDependencies": {
     "@ionic/core": "^7.6.6",
@@ -49,6 +54,9 @@
     "@storybook/test": "^7.6.10",
     "@types/jest": "^29.5.6",
     "@types/node": "^20.11.7",
+    "@types/react": "^18.3.18",
+    "fs-extra": "^11.2.0",
+    "glob-promise": "^6.0.7",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
     "npm-run-all": "^4.1.5",
@@ -57,6 +65,7 @@
     "react-dom": "^18.2.0",
     "stencil-tailwind-plugin": "^1.8.0",
     "storybook": "^7.6.10",
+    "svgson": "^5.3.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },

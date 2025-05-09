@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import tailwind, { PluginConfigOpts, setPluginConfigurationDefaults, tailwindGlobal, tailwindHMR } from 'stencil-tailwind-plugin';
+import tailwind, { setPluginConfigurationDefaults, tailwindGlobal, tailwindHMR } from 'stencil-tailwind-plugin';
 import tailwindConf from './tailwind.config';
 
 const opts = {
@@ -35,7 +35,7 @@ export const config: Config = {
           src: '**/*.{jpg,png}',
           dest: 'dist/didroom-components/assets',
           warn: true,
-        }
+        },
       ],
       generateTypeDeclarations: true,
     },
@@ -44,7 +44,7 @@ export const config: Config = {
     },
     {
       type: 'docs-vscode',
-      file: 'vscode-data.json',
+      file: 'dist/vscode-data.json',
     },
     {
       type: 'www',

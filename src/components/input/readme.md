@@ -13,6 +13,7 @@
 | `clearButton` | `clear-button` |             | `boolean`                                     | `undefined` |
 | `errorText`   | `error-text`   |             | `string`                                      | `undefined` |
 | `helperText`  | `helper-text`  |             | `string`                                      | `undefined` |
+| `hidable`     | `hidable`      |             | `boolean`                                     | `undefined` |
 | `label`       | `label`        |             | `string`                                      | `undefined` |
 | `name`        | `name`         |             | `string`                                      | `undefined` |
 | `personIcon`  | `person-icon`  |             | `boolean`                                     | `undefined` |
@@ -35,6 +36,7 @@
 
 - [d-text](../text)
 - ion-input
+- [d-icon](../icon)
 - [d-button](../button)
 
 ### Graph
@@ -42,6 +44,7 @@
 graph TD;
   d-input --> d-text
   d-input --> ion-input
+  d-input --> d-icon
   d-input --> d-button
   ion-input --> ion-icon
   style d-input fill:#f9f,stroke:#333,stroke-width:4px

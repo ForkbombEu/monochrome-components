@@ -8,37 +8,28 @@ import { Component, Host, Prop, h } from '@stencil/core';
 export class DCredentialService {
   @Prop() name: string;
   @Prop() issuer: string;
-  @Prop() logoSrc?: string;
-  @Prop() description?: string;
+  @Prop({ attribute: 'logo-src' }) logoSrc?: string;
+  @Prop() organization?: string;
   @Prop({ reflect: true }) href?: string;
 
-  render() {
-    const content = (
-      <div>
-        <d-avatar name={this.name} src={this.logoSrc} size="l"></d-avatar>
-        <div class="flex flex-col grow">
-          <d-text size="l">{this.name}</d-text>
-          <d-text size="s">{this.description}</d-text>
-          <d-text size="xs">{this.issuer}</d-text>
-        </div>
-        {this.href && (
-          <div class="shrink-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-              <path d="M3 12L21 12M21 12L12.5 20.5M21 12L12.5 3.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        )}
-      </div>
-    );
 
-    if (this.href) {
-      return (
-        <Host>
-          <a href={this.href}>{content}</a>
-        </Host>
-      );
-    } else {
-      return <Host>{content}</Host>;
-    }
+  render() {
+    return (
+      <Host>
+        <d-list-item
+          name={this.name}
+          issuer={this.issuer}
+          logo-src={this.logoSrc}
+          href={this.href}
+          background
+        >
+          <div slot="organization">
+            <d-text size="s" class="!text-on-alt">
+            {this.organization}
+            </d-text>
+          </div>
+        </d-list-item>
+      </Host>
+    );
   }
 }

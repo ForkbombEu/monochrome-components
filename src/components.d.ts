@@ -5,14 +5,32 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Color, Shape, Size } from "./components/types";
-export { Color, Shape, Size } from "./components/types";
+import { Color, Gap, Shape, Size } from "./components/types";
+import { Tab } from "./components/tab-button/d-tab-button";
+export { Color, Gap, Shape, Size } from "./components/types";
+export { Tab } from "./components/tab-button/d-tab-button";
 export namespace Components {
+    interface DActivityCard {
+        "date": string;
+        "href"?: string;
+        "logo": string;
+        "message": string;
+        "read": boolean;
+    }
+    interface DAppDetails {
+        "developedBy": string;
+        "version": string;
+    }
     interface DAvatar {
         "name"?: string;
         "shape"?: Shape;
         "size"?: Size;
         "src"?: string;
+    }
+    interface DBackgroundIllustration {
+        "background": string;
+    }
+    interface DBadge {
     }
     interface DButton {
         "buttonType": string;
@@ -25,9 +43,20 @@ export namespace Components {
         "size"?: 'small' | 'default' | 'large';
         "type": 'submit' | 'reset' | 'button';
     }
+    interface DButtonsGroup {
+    }
+    interface DCheckbox {
+        "checked": boolean;
+        "error": string | undefined;
+    }
+    interface DCopyButton {
+        "delay": number;
+        "textToCopy": string;
+    }
     interface DCredentialCard {
-        "description"?: string;
         "expirationDate"?: string;
+        "expirationLabel": string;
+        "issuedByLabel": string;
         "issuer": string;
         "logoSrc"?: string;
         "name": string;
@@ -36,7 +65,6 @@ export namespace Components {
     interface DCredentialDetail {
         "description": string;
         "issuer": string;
-        "logoSrc"?: string;
         "longDescription"?: string;
         "name": string;
     }
@@ -46,21 +74,59 @@ export namespace Components {
         "issuer": string;
         "logoSrc"?: string;
         "name": string;
+        "organization"?: string;
     }
     interface DDefinition {
         "definition": string;
+        "dotted": boolean;
         "hidable": boolean;
         "title": string;
+    }
+    interface DDidBox {
+        "did": string;
+    }
+    interface DEmptyState {
+        "buttonText": string | undefined;
+        "heading": string;
+        "href": string | undefined;
+        "text": string;
+    }
+    interface DFeedback {
+        "feedback": string;
+        "message": string | undefined;
+        "type": 'success' | 'error';
+    }
+    interface DHeader {
+        "backButton": boolean;
+        "settings": boolean;
+        "settingsTitle": string;
     }
     interface DHeading {
         "color": Color;
         "size": Size;
+    }
+    interface DHorizontalStack {
+        "gap": Gap;
+    }
+    interface DIcon {
+        "icon": string;
+        "outline": boolean;
+        "size": number;
+    }
+    interface DIllustration {
+        "height": number;
+        "illustration": string;
+        "width": number;
+    }
+    interface DInfoLed {
+        "type": 'success' | 'warning' | 'error';
     }
     interface DInput {
         "autoFocus": boolean;
         "clearButton": boolean;
         "errorText": string;
         "helperText": string;
+        "hidable": boolean;
         "label": string;
         "name": string;
         "personIcon": boolean;
@@ -68,27 +134,157 @@ export namespace Components {
         "type": 'text' | 'password' | 'email' | 'number';
         "value": string;
     }
+    interface DListItem {
+        "background"?: boolean;
+        "href"?: string;
+        "issuer"?: string;
+        "logoSrc"?: string;
+        "name": string;
+    }
+    interface DLoading {
+        "loading": boolean;
+        "message": string;
+    }
     interface DLogo {
+    }
+    interface DOrganizations {
+        "empty": boolean;
+        "heading": string;
+    }
+    interface DPageDescription {
+        "description"?: string;
+        "title": string;
+    }
+    interface DQrCode {
+        "generationDate": string;
+        "generationHour": string;
+        "qr": string;
+        "relyingParty": string;
+        "sessionId": string;
+        "sessionIdLabel": string;
+        "verifierLabel": string;
+    }
+    interface DScanButton {
+        "href": string;
+    }
+    interface DScannerMask {
+        "description": string;
+        "heading": string;
+    }
+    interface DSessionCard {
+        "date": string;
+        "failureMessage": string;
+        "inProgress": boolean;
+        "inProgressMessage": string;
+        "sessionMessage": string;
+        "sid": string;
+        "success": boolean;
+        "verifiedMessage": string;
+    }
+    interface DSettingsMenu {
+        "accountSettings": string;
+        "developedBy": string;
+        "languages": string;
+        "logOut": string;
+        "notificationsSettings": string;
+        "privacyPolicy": string;
+        "support": string;
+        "version": string;
+    }
+    interface DSwipablePage {
+        "background": string;
+        "description": string;
+        "subtitle"?: string;
+        "title": string;
+    }
+    interface DTabButton {
+        "active": boolean;
+        "hasAlert": boolean;
+        "tab": Tab;
+    }
+    interface DTabPage {
+        "scanButtonHref": string | undefined;
+        "scanButtonText": string | undefined;
+        "settings": boolean;
+        "tab": string;
+        "title": string;
     }
     interface DText {
         "color": Color;
         "size": Size;
+    }
+    interface DVerificationCard {
+        "flow": string;
+        "logo": string;
+        "relyingParty": string;
+        "selected": boolean;
+        "verifier": string;
+    }
+    interface DVerticalStack {
+        "gap": Gap;
+        "separator"?: boolean;
+    }
+    interface DidroomLogo {
     }
 }
 export interface DButtonCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDButtonElement;
 }
+export interface DCheckboxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDCheckboxElement;
+}
+export interface DEmptyStateCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDEmptyStateElement;
+}
+export interface DFeedbackCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDFeedbackElement;
+}
+export interface DHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDHeaderElement;
+}
 export interface DInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLDInputElement;
 }
+export interface DSettingsMenuCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDSettingsMenuElement;
+}
 declare global {
+    interface HTMLDActivityCardElement extends Components.DActivityCard, HTMLStencilElement {
+    }
+    var HTMLDActivityCardElement: {
+        prototype: HTMLDActivityCardElement;
+        new (): HTMLDActivityCardElement;
+    };
+    interface HTMLDAppDetailsElement extends Components.DAppDetails, HTMLStencilElement {
+    }
+    var HTMLDAppDetailsElement: {
+        prototype: HTMLDAppDetailsElement;
+        new (): HTMLDAppDetailsElement;
+    };
     interface HTMLDAvatarElement extends Components.DAvatar, HTMLStencilElement {
     }
     var HTMLDAvatarElement: {
         prototype: HTMLDAvatarElement;
         new (): HTMLDAvatarElement;
+    };
+    interface HTMLDBackgroundIllustrationElement extends Components.DBackgroundIllustration, HTMLStencilElement {
+    }
+    var HTMLDBackgroundIllustrationElement: {
+        prototype: HTMLDBackgroundIllustrationElement;
+        new (): HTMLDBackgroundIllustrationElement;
+    };
+    interface HTMLDBadgeElement extends Components.DBadge, HTMLStencilElement {
+    }
+    var HTMLDBadgeElement: {
+        prototype: HTMLDBadgeElement;
+        new (): HTMLDBadgeElement;
     };
     interface HTMLDButtonElementEventMap {
         "dFocus": void;
@@ -107,6 +303,35 @@ declare global {
     var HTMLDButtonElement: {
         prototype: HTMLDButtonElement;
         new (): HTMLDButtonElement;
+    };
+    interface HTMLDButtonsGroupElement extends Components.DButtonsGroup, HTMLStencilElement {
+    }
+    var HTMLDButtonsGroupElement: {
+        prototype: HTMLDButtonsGroupElement;
+        new (): HTMLDButtonsGroupElement;
+    };
+    interface HTMLDCheckboxElementEventMap {
+        "dChange": boolean;
+    }
+    interface HTMLDCheckboxElement extends Components.DCheckbox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDCheckboxElementEventMap>(type: K, listener: (this: HTMLDCheckboxElement, ev: DCheckboxCustomEvent<HTMLDCheckboxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDCheckboxElementEventMap>(type: K, listener: (this: HTMLDCheckboxElement, ev: DCheckboxCustomEvent<HTMLDCheckboxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDCheckboxElement: {
+        prototype: HTMLDCheckboxElement;
+        new (): HTMLDCheckboxElement;
+    };
+    interface HTMLDCopyButtonElement extends Components.DCopyButton, HTMLStencilElement {
+    }
+    var HTMLDCopyButtonElement: {
+        prototype: HTMLDCopyButtonElement;
+        new (): HTMLDCopyButtonElement;
     };
     interface HTMLDCredentialCardElement extends Components.DCredentialCard, HTMLStencilElement {
     }
@@ -132,11 +357,92 @@ declare global {
         prototype: HTMLDDefinitionElement;
         new (): HTMLDDefinitionElement;
     };
+    interface HTMLDDidBoxElement extends Components.DDidBox, HTMLStencilElement {
+    }
+    var HTMLDDidBoxElement: {
+        prototype: HTMLDDidBoxElement;
+        new (): HTMLDDidBoxElement;
+    };
+    interface HTMLDEmptyStateElementEventMap {
+        "buttonClick": void;
+    }
+    interface HTMLDEmptyStateElement extends Components.DEmptyState, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDEmptyStateElementEventMap>(type: K, listener: (this: HTMLDEmptyStateElement, ev: DEmptyStateCustomEvent<HTMLDEmptyStateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDEmptyStateElementEventMap>(type: K, listener: (this: HTMLDEmptyStateElement, ev: DEmptyStateCustomEvent<HTMLDEmptyStateElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDEmptyStateElement: {
+        prototype: HTMLDEmptyStateElement;
+        new (): HTMLDEmptyStateElement;
+    };
+    interface HTMLDFeedbackElementEventMap {
+        "dClose": void;
+    }
+    interface HTMLDFeedbackElement extends Components.DFeedback, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDFeedbackElementEventMap>(type: K, listener: (this: HTMLDFeedbackElement, ev: DFeedbackCustomEvent<HTMLDFeedbackElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDFeedbackElementEventMap>(type: K, listener: (this: HTMLDFeedbackElement, ev: DFeedbackCustomEvent<HTMLDFeedbackElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDFeedbackElement: {
+        prototype: HTMLDFeedbackElement;
+        new (): HTMLDFeedbackElement;
+    };
+    interface HTMLDHeaderElementEventMap {
+        "backButtonClick": void;
+    }
+    interface HTMLDHeaderElement extends Components.DHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDHeaderElementEventMap>(type: K, listener: (this: HTMLDHeaderElement, ev: DHeaderCustomEvent<HTMLDHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDHeaderElementEventMap>(type: K, listener: (this: HTMLDHeaderElement, ev: DHeaderCustomEvent<HTMLDHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDHeaderElement: {
+        prototype: HTMLDHeaderElement;
+        new (): HTMLDHeaderElement;
+    };
     interface HTMLDHeadingElement extends Components.DHeading, HTMLStencilElement {
     }
     var HTMLDHeadingElement: {
         prototype: HTMLDHeadingElement;
         new (): HTMLDHeadingElement;
+    };
+    interface HTMLDHorizontalStackElement extends Components.DHorizontalStack, HTMLStencilElement {
+    }
+    var HTMLDHorizontalStackElement: {
+        prototype: HTMLDHorizontalStackElement;
+        new (): HTMLDHorizontalStackElement;
+    };
+    interface HTMLDIconElement extends Components.DIcon, HTMLStencilElement {
+    }
+    var HTMLDIconElement: {
+        prototype: HTMLDIconElement;
+        new (): HTMLDIconElement;
+    };
+    interface HTMLDIllustrationElement extends Components.DIllustration, HTMLStencilElement {
+    }
+    var HTMLDIllustrationElement: {
+        prototype: HTMLDIllustrationElement;
+        new (): HTMLDIllustrationElement;
+    };
+    interface HTMLDInfoLedElement extends Components.DInfoLed, HTMLStencilElement {
+    }
+    var HTMLDInfoLedElement: {
+        prototype: HTMLDInfoLedElement;
+        new (): HTMLDInfoLedElement;
     };
     interface HTMLDInputElementEventMap {
         "dInput": string;
@@ -156,11 +462,97 @@ declare global {
         prototype: HTMLDInputElement;
         new (): HTMLDInputElement;
     };
+    interface HTMLDListItemElement extends Components.DListItem, HTMLStencilElement {
+    }
+    var HTMLDListItemElement: {
+        prototype: HTMLDListItemElement;
+        new (): HTMLDListItemElement;
+    };
+    interface HTMLDLoadingElement extends Components.DLoading, HTMLStencilElement {
+    }
+    var HTMLDLoadingElement: {
+        prototype: HTMLDLoadingElement;
+        new (): HTMLDLoadingElement;
+    };
     interface HTMLDLogoElement extends Components.DLogo, HTMLStencilElement {
     }
     var HTMLDLogoElement: {
         prototype: HTMLDLogoElement;
         new (): HTMLDLogoElement;
+    };
+    interface HTMLDOrganizationsElement extends Components.DOrganizations, HTMLStencilElement {
+    }
+    var HTMLDOrganizationsElement: {
+        prototype: HTMLDOrganizationsElement;
+        new (): HTMLDOrganizationsElement;
+    };
+    interface HTMLDPageDescriptionElement extends Components.DPageDescription, HTMLStencilElement {
+    }
+    var HTMLDPageDescriptionElement: {
+        prototype: HTMLDPageDescriptionElement;
+        new (): HTMLDPageDescriptionElement;
+    };
+    interface HTMLDQrCodeElement extends Components.DQrCode, HTMLStencilElement {
+    }
+    var HTMLDQrCodeElement: {
+        prototype: HTMLDQrCodeElement;
+        new (): HTMLDQrCodeElement;
+    };
+    interface HTMLDScanButtonElement extends Components.DScanButton, HTMLStencilElement {
+    }
+    var HTMLDScanButtonElement: {
+        prototype: HTMLDScanButtonElement;
+        new (): HTMLDScanButtonElement;
+    };
+    interface HTMLDScannerMaskElement extends Components.DScannerMask, HTMLStencilElement {
+    }
+    var HTMLDScannerMaskElement: {
+        prototype: HTMLDScannerMaskElement;
+        new (): HTMLDScannerMaskElement;
+    };
+    interface HTMLDSessionCardElement extends Components.DSessionCard, HTMLStencilElement {
+    }
+    var HTMLDSessionCardElement: {
+        prototype: HTMLDSessionCardElement;
+        new (): HTMLDSessionCardElement;
+    };
+    interface HTMLDSettingsMenuElementEventMap {
+        "accountSettingsClick": void;
+        "languageSettingsClick": void;
+        "appSettingsClick": void;
+        "logoutClick": void;
+    }
+    interface HTMLDSettingsMenuElement extends Components.DSettingsMenu, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDSettingsMenuElementEventMap>(type: K, listener: (this: HTMLDSettingsMenuElement, ev: DSettingsMenuCustomEvent<HTMLDSettingsMenuElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDSettingsMenuElementEventMap>(type: K, listener: (this: HTMLDSettingsMenuElement, ev: DSettingsMenuCustomEvent<HTMLDSettingsMenuElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDSettingsMenuElement: {
+        prototype: HTMLDSettingsMenuElement;
+        new (): HTMLDSettingsMenuElement;
+    };
+    interface HTMLDSwipablePageElement extends Components.DSwipablePage, HTMLStencilElement {
+    }
+    var HTMLDSwipablePageElement: {
+        prototype: HTMLDSwipablePageElement;
+        new (): HTMLDSwipablePageElement;
+    };
+    interface HTMLDTabButtonElement extends Components.DTabButton, HTMLStencilElement {
+    }
+    var HTMLDTabButtonElement: {
+        prototype: HTMLDTabButtonElement;
+        new (): HTMLDTabButtonElement;
+    };
+    interface HTMLDTabPageElement extends Components.DTabPage, HTMLStencilElement {
+    }
+    var HTMLDTabPageElement: {
+        prototype: HTMLDTabPageElement;
+        new (): HTMLDTabPageElement;
     };
     interface HTMLDTextElement extends Components.DText, HTMLStencilElement {
     }
@@ -168,25 +560,89 @@ declare global {
         prototype: HTMLDTextElement;
         new (): HTMLDTextElement;
     };
+    interface HTMLDVerificationCardElement extends Components.DVerificationCard, HTMLStencilElement {
+    }
+    var HTMLDVerificationCardElement: {
+        prototype: HTMLDVerificationCardElement;
+        new (): HTMLDVerificationCardElement;
+    };
+    interface HTMLDVerticalStackElement extends Components.DVerticalStack, HTMLStencilElement {
+    }
+    var HTMLDVerticalStackElement: {
+        prototype: HTMLDVerticalStackElement;
+        new (): HTMLDVerticalStackElement;
+    };
+    interface HTMLDidroomLogoElement extends Components.DidroomLogo, HTMLStencilElement {
+    }
+    var HTMLDidroomLogoElement: {
+        prototype: HTMLDidroomLogoElement;
+        new (): HTMLDidroomLogoElement;
+    };
     interface HTMLElementTagNameMap {
+        "d-activity-card": HTMLDActivityCardElement;
+        "d-app-details": HTMLDAppDetailsElement;
         "d-avatar": HTMLDAvatarElement;
+        "d-background-illustration": HTMLDBackgroundIllustrationElement;
+        "d-badge": HTMLDBadgeElement;
         "d-button": HTMLDButtonElement;
+        "d-buttons-group": HTMLDButtonsGroupElement;
+        "d-checkbox": HTMLDCheckboxElement;
+        "d-copy-button": HTMLDCopyButtonElement;
         "d-credential-card": HTMLDCredentialCardElement;
         "d-credential-detail": HTMLDCredentialDetailElement;
         "d-credential-service": HTMLDCredentialServiceElement;
         "d-definition": HTMLDDefinitionElement;
+        "d-did-box": HTMLDDidBoxElement;
+        "d-empty-state": HTMLDEmptyStateElement;
+        "d-feedback": HTMLDFeedbackElement;
+        "d-header": HTMLDHeaderElement;
         "d-heading": HTMLDHeadingElement;
+        "d-horizontal-stack": HTMLDHorizontalStackElement;
+        "d-icon": HTMLDIconElement;
+        "d-illustration": HTMLDIllustrationElement;
+        "d-info-led": HTMLDInfoLedElement;
         "d-input": HTMLDInputElement;
+        "d-list-item": HTMLDListItemElement;
+        "d-loading": HTMLDLoadingElement;
         "d-logo": HTMLDLogoElement;
+        "d-organizations": HTMLDOrganizationsElement;
+        "d-page-description": HTMLDPageDescriptionElement;
+        "d-qr-code": HTMLDQrCodeElement;
+        "d-scan-button": HTMLDScanButtonElement;
+        "d-scanner-mask": HTMLDScannerMaskElement;
+        "d-session-card": HTMLDSessionCardElement;
+        "d-settings-menu": HTMLDSettingsMenuElement;
+        "d-swipable-page": HTMLDSwipablePageElement;
+        "d-tab-button": HTMLDTabButtonElement;
+        "d-tab-page": HTMLDTabPageElement;
         "d-text": HTMLDTextElement;
+        "d-verification-card": HTMLDVerificationCardElement;
+        "d-vertical-stack": HTMLDVerticalStackElement;
+        "didroom-logo": HTMLDidroomLogoElement;
     }
 }
 declare namespace LocalJSX {
+    interface DActivityCard {
+        "date"?: string;
+        "href"?: string;
+        "logo"?: string;
+        "message"?: string;
+        "read"?: boolean;
+    }
+    interface DAppDetails {
+        "developedBy"?: string;
+        "version"?: string;
+    }
     interface DAvatar {
         "name"?: string;
         "shape"?: Shape;
         "size"?: Size;
         "src"?: string;
+    }
+    interface DBackgroundIllustration {
+        "background"?: string;
+    }
+    interface DBadge {
     }
     interface DButton {
         "buttonType"?: string;
@@ -201,9 +657,21 @@ declare namespace LocalJSX {
         "size"?: 'small' | 'default' | 'large';
         "type"?: 'submit' | 'reset' | 'button';
     }
+    interface DButtonsGroup {
+    }
+    interface DCheckbox {
+        "checked"?: boolean;
+        "error"?: string | undefined;
+        "onDChange"?: (event: DCheckboxCustomEvent<boolean>) => void;
+    }
+    interface DCopyButton {
+        "delay"?: number;
+        "textToCopy"?: string;
+    }
     interface DCredentialCard {
-        "description"?: string;
         "expirationDate"?: string;
+        "expirationLabel"?: string;
+        "issuedByLabel"?: string;
         "issuer"?: string;
         "logoSrc"?: string;
         "name"?: string;
@@ -212,7 +680,6 @@ declare namespace LocalJSX {
     interface DCredentialDetail {
         "description"?: string;
         "issuer"?: string;
-        "logoSrc"?: string;
         "longDescription"?: string;
         "name"?: string;
     }
@@ -222,21 +689,62 @@ declare namespace LocalJSX {
         "issuer"?: string;
         "logoSrc"?: string;
         "name"?: string;
+        "organization"?: string;
     }
     interface DDefinition {
         "definition"?: string;
+        "dotted"?: boolean;
         "hidable"?: boolean;
         "title"?: string;
+    }
+    interface DDidBox {
+        "did"?: string;
+    }
+    interface DEmptyState {
+        "buttonText"?: string | undefined;
+        "heading"?: string;
+        "href"?: string | undefined;
+        "onButtonClick"?: (event: DEmptyStateCustomEvent<void>) => void;
+        "text"?: string;
+    }
+    interface DFeedback {
+        "feedback"?: string;
+        "message"?: string | undefined;
+        "onDClose"?: (event: DFeedbackCustomEvent<void>) => void;
+        "type"?: 'success' | 'error';
+    }
+    interface DHeader {
+        "backButton"?: boolean;
+        "onBackButtonClick"?: (event: DHeaderCustomEvent<void>) => void;
+        "settings"?: boolean;
+        "settingsTitle"?: string;
     }
     interface DHeading {
         "color"?: Color;
         "size"?: Size;
+    }
+    interface DHorizontalStack {
+        "gap"?: Gap;
+    }
+    interface DIcon {
+        "icon"?: string;
+        "outline"?: boolean;
+        "size"?: number;
+    }
+    interface DIllustration {
+        "height"?: number;
+        "illustration"?: string;
+        "width"?: number;
+    }
+    interface DInfoLed {
+        "type"?: 'success' | 'warning' | 'error';
     }
     interface DInput {
         "autoFocus"?: boolean;
         "clearButton"?: boolean;
         "errorText"?: string;
         "helperText"?: string;
+        "hidable"?: boolean;
         "label"?: string;
         "name"?: string;
         "onDChange"?: (event: DInputCustomEvent<string>) => void;
@@ -246,39 +754,189 @@ declare namespace LocalJSX {
         "type"?: 'text' | 'password' | 'email' | 'number';
         "value"?: string;
     }
+    interface DListItem {
+        "background"?: boolean;
+        "href"?: string;
+        "issuer"?: string;
+        "logoSrc"?: string;
+        "name"?: string;
+    }
+    interface DLoading {
+        "loading"?: boolean;
+        "message"?: string;
+    }
     interface DLogo {
+    }
+    interface DOrganizations {
+        "empty"?: boolean;
+        "heading"?: string;
+    }
+    interface DPageDescription {
+        "description"?: string;
+        "title"?: string;
+    }
+    interface DQrCode {
+        "generationDate"?: string;
+        "generationHour"?: string;
+        "qr"?: string;
+        "relyingParty"?: string;
+        "sessionId"?: string;
+        "sessionIdLabel"?: string;
+        "verifierLabel"?: string;
+    }
+    interface DScanButton {
+        "href"?: string;
+    }
+    interface DScannerMask {
+        "description"?: string;
+        "heading"?: string;
+    }
+    interface DSessionCard {
+        "date"?: string;
+        "failureMessage"?: string;
+        "inProgress"?: boolean;
+        "inProgressMessage"?: string;
+        "sessionMessage"?: string;
+        "sid"?: string;
+        "success"?: boolean;
+        "verifiedMessage"?: string;
+    }
+    interface DSettingsMenu {
+        "accountSettings"?: string;
+        "developedBy"?: string;
+        "languages"?: string;
+        "logOut"?: string;
+        "notificationsSettings"?: string;
+        "onAccountSettingsClick"?: (event: DSettingsMenuCustomEvent<void>) => void;
+        "onAppSettingsClick"?: (event: DSettingsMenuCustomEvent<void>) => void;
+        "onLanguageSettingsClick"?: (event: DSettingsMenuCustomEvent<void>) => void;
+        "onLogoutClick"?: (event: DSettingsMenuCustomEvent<void>) => void;
+        "privacyPolicy"?: string;
+        "support"?: string;
+        "version"?: string;
+    }
+    interface DSwipablePage {
+        "background"?: string;
+        "description"?: string;
+        "subtitle"?: string;
+        "title"?: string;
+    }
+    interface DTabButton {
+        "active"?: boolean;
+        "hasAlert"?: boolean;
+        "tab"?: Tab;
+    }
+    interface DTabPage {
+        "scanButtonHref"?: string | undefined;
+        "scanButtonText"?: string | undefined;
+        "settings"?: boolean;
+        "tab"?: string;
+        "title"?: string;
     }
     interface DText {
         "color"?: Color;
         "size"?: Size;
     }
+    interface DVerificationCard {
+        "flow"?: string;
+        "logo"?: string;
+        "relyingParty"?: string;
+        "selected"?: boolean;
+        "verifier"?: string;
+    }
+    interface DVerticalStack {
+        "gap"?: Gap;
+        "separator"?: boolean;
+    }
+    interface DidroomLogo {
+    }
     interface IntrinsicElements {
+        "d-activity-card": DActivityCard;
+        "d-app-details": DAppDetails;
         "d-avatar": DAvatar;
+        "d-background-illustration": DBackgroundIllustration;
+        "d-badge": DBadge;
         "d-button": DButton;
+        "d-buttons-group": DButtonsGroup;
+        "d-checkbox": DCheckbox;
+        "d-copy-button": DCopyButton;
         "d-credential-card": DCredentialCard;
         "d-credential-detail": DCredentialDetail;
         "d-credential-service": DCredentialService;
         "d-definition": DDefinition;
+        "d-did-box": DDidBox;
+        "d-empty-state": DEmptyState;
+        "d-feedback": DFeedback;
+        "d-header": DHeader;
         "d-heading": DHeading;
+        "d-horizontal-stack": DHorizontalStack;
+        "d-icon": DIcon;
+        "d-illustration": DIllustration;
+        "d-info-led": DInfoLed;
         "d-input": DInput;
+        "d-list-item": DListItem;
+        "d-loading": DLoading;
         "d-logo": DLogo;
+        "d-organizations": DOrganizations;
+        "d-page-description": DPageDescription;
+        "d-qr-code": DQrCode;
+        "d-scan-button": DScanButton;
+        "d-scanner-mask": DScannerMask;
+        "d-session-card": DSessionCard;
+        "d-settings-menu": DSettingsMenu;
+        "d-swipable-page": DSwipablePage;
+        "d-tab-button": DTabButton;
+        "d-tab-page": DTabPage;
         "d-text": DText;
+        "d-verification-card": DVerificationCard;
+        "d-vertical-stack": DVerticalStack;
+        "didroom-logo": DidroomLogo;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "d-activity-card": LocalJSX.DActivityCard & JSXBase.HTMLAttributes<HTMLDActivityCardElement>;
+            "d-app-details": LocalJSX.DAppDetails & JSXBase.HTMLAttributes<HTMLDAppDetailsElement>;
             "d-avatar": LocalJSX.DAvatar & JSXBase.HTMLAttributes<HTMLDAvatarElement>;
+            "d-background-illustration": LocalJSX.DBackgroundIllustration & JSXBase.HTMLAttributes<HTMLDBackgroundIllustrationElement>;
+            "d-badge": LocalJSX.DBadge & JSXBase.HTMLAttributes<HTMLDBadgeElement>;
             "d-button": LocalJSX.DButton & JSXBase.HTMLAttributes<HTMLDButtonElement>;
+            "d-buttons-group": LocalJSX.DButtonsGroup & JSXBase.HTMLAttributes<HTMLDButtonsGroupElement>;
+            "d-checkbox": LocalJSX.DCheckbox & JSXBase.HTMLAttributes<HTMLDCheckboxElement>;
+            "d-copy-button": LocalJSX.DCopyButton & JSXBase.HTMLAttributes<HTMLDCopyButtonElement>;
             "d-credential-card": LocalJSX.DCredentialCard & JSXBase.HTMLAttributes<HTMLDCredentialCardElement>;
             "d-credential-detail": LocalJSX.DCredentialDetail & JSXBase.HTMLAttributes<HTMLDCredentialDetailElement>;
             "d-credential-service": LocalJSX.DCredentialService & JSXBase.HTMLAttributes<HTMLDCredentialServiceElement>;
             "d-definition": LocalJSX.DDefinition & JSXBase.HTMLAttributes<HTMLDDefinitionElement>;
+            "d-did-box": LocalJSX.DDidBox & JSXBase.HTMLAttributes<HTMLDDidBoxElement>;
+            "d-empty-state": LocalJSX.DEmptyState & JSXBase.HTMLAttributes<HTMLDEmptyStateElement>;
+            "d-feedback": LocalJSX.DFeedback & JSXBase.HTMLAttributes<HTMLDFeedbackElement>;
+            "d-header": LocalJSX.DHeader & JSXBase.HTMLAttributes<HTMLDHeaderElement>;
             "d-heading": LocalJSX.DHeading & JSXBase.HTMLAttributes<HTMLDHeadingElement>;
+            "d-horizontal-stack": LocalJSX.DHorizontalStack & JSXBase.HTMLAttributes<HTMLDHorizontalStackElement>;
+            "d-icon": LocalJSX.DIcon & JSXBase.HTMLAttributes<HTMLDIconElement>;
+            "d-illustration": LocalJSX.DIllustration & JSXBase.HTMLAttributes<HTMLDIllustrationElement>;
+            "d-info-led": LocalJSX.DInfoLed & JSXBase.HTMLAttributes<HTMLDInfoLedElement>;
             "d-input": LocalJSX.DInput & JSXBase.HTMLAttributes<HTMLDInputElement>;
+            "d-list-item": LocalJSX.DListItem & JSXBase.HTMLAttributes<HTMLDListItemElement>;
+            "d-loading": LocalJSX.DLoading & JSXBase.HTMLAttributes<HTMLDLoadingElement>;
             "d-logo": LocalJSX.DLogo & JSXBase.HTMLAttributes<HTMLDLogoElement>;
+            "d-organizations": LocalJSX.DOrganizations & JSXBase.HTMLAttributes<HTMLDOrganizationsElement>;
+            "d-page-description": LocalJSX.DPageDescription & JSXBase.HTMLAttributes<HTMLDPageDescriptionElement>;
+            "d-qr-code": LocalJSX.DQrCode & JSXBase.HTMLAttributes<HTMLDQrCodeElement>;
+            "d-scan-button": LocalJSX.DScanButton & JSXBase.HTMLAttributes<HTMLDScanButtonElement>;
+            "d-scanner-mask": LocalJSX.DScannerMask & JSXBase.HTMLAttributes<HTMLDScannerMaskElement>;
+            "d-session-card": LocalJSX.DSessionCard & JSXBase.HTMLAttributes<HTMLDSessionCardElement>;
+            "d-settings-menu": LocalJSX.DSettingsMenu & JSXBase.HTMLAttributes<HTMLDSettingsMenuElement>;
+            "d-swipable-page": LocalJSX.DSwipablePage & JSXBase.HTMLAttributes<HTMLDSwipablePageElement>;
+            "d-tab-button": LocalJSX.DTabButton & JSXBase.HTMLAttributes<HTMLDTabButtonElement>;
+            "d-tab-page": LocalJSX.DTabPage & JSXBase.HTMLAttributes<HTMLDTabPageElement>;
             "d-text": LocalJSX.DText & JSXBase.HTMLAttributes<HTMLDTextElement>;
+            "d-verification-card": LocalJSX.DVerificationCard & JSXBase.HTMLAttributes<HTMLDVerificationCardElement>;
+            "d-vertical-stack": LocalJSX.DVerticalStack & JSXBase.HTMLAttributes<HTMLDVerticalStackElement>;
+            "didroom-logo": LocalJSX.DidroomLogo & JSXBase.HTMLAttributes<HTMLDidroomLogoElement>;
         }
     }
 }

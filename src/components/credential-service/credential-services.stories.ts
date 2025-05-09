@@ -2,8 +2,13 @@ import { Meta, StoryObj } from '@storybook/html';
 import type { Components } from '../../components.js';
 
 const meta = {
-  title: 'Design System/Molecule/CredentialService',
-  render: args => `<d-credential-service name="${args.name}" issuer="${args.issuer}" description="${args.description}" href="${args.href}"></didroom-avatar>`,
+  title: 'Design System/DATA DISPLAY/CredentialService',
+  render: args => `<d-credential-service 
+  name="${args.name}" 
+  issuer="${args.issuer}" 
+  href="${args.href}" 
+  logo-src="${args.logoSrc}"
+  ></d-credential-service>`,
 } satisfies Meta<Components.DCredentialService>;
 
 export default meta;
@@ -12,8 +17,8 @@ type Story = StoryObj<Components.DCredentialService>;
 export const Default: Story = {
   args: {
     name: 'Over 18',
-    description: 'Age Validation',
     issuer: 'Italian Government',
+    logoSrc: `https://api.dicebear.com/9.x/icons/svg?seed=${new Date()}`,
   },
   parameters: {
     design: {
